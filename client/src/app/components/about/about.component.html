@@ -5,8 +5,8 @@
 <select>
 	<!--TODO: loop over searchCategories to create dropdown options-->
 	<!--populate body and text value https://www.w3schools.com/tags/att_option_selected.asp-->
-	<option [ngValue]="category" *ngFor="let category of searchCategories">
-		{{category}}
+	<option [ngValue]="component" *ngFor="let category of searchCategories">
+		{{component}}
 	</option>
 </select>
 <!--TODO: Call search function when the button is clicked-->
