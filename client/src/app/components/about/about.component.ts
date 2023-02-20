@@ -1,22 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { SpotifyService } from '../../services/spotify.service';
+import { ArtistData } from '../../data/artist-data';
+import { AlbumData } from '../../data/album-data';
+import { TrackData } from '../../data/track-data';
+import { ResourceData } from '../../data/resource-data';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css'],
+  providers: [SpotifyService]
 })
-export class AboutComponent implements OnInit {
-  name:string = null;
-  profile_pic:string = "../../../assets/unknown.jpg";
-  profile_link:string = null;
+export class SearchComponent implements OnInit {
+  searchString: string;
+  searchCategory: string = 'artist';
+  searchCategories: string[] = ['artist', 'album', 'track'];
+  resources: ResourceData[];
 
-  //TODO: inject the Spotify service
-  constructor() { }
+  constructor(private spotifyService: SpotifyService) { }
 
   ngOnInit() {
   }
 
-  /*TODO: create a function which gets the "about me" information from Spotify when the button in the view is clicked.
-  In that function, update the name, profile_pic, and profile_link fields */
+  searchSongs() {
+    console.log(this.searchCategory);
+    console.log(this.searchString);
+    this.spotifyService.searchFor(this.searchCategory, this.searchString).then((data) => {
+      console.log(data);
+      console.log("lester");
+      this.resources = data;
+    })
+  }
 
 }

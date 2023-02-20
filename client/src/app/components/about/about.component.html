@@ -1,10 +1,15 @@
-<!--TODO: Define click callback to load about me information-->
-<button class="btn btn-light">Load info about me</button>
-<!--TODO: replace ??? to bind to name-->
-<h3>Logged in user: ???</h3>
-<!--TODO: bind img src's to profile_pic-->
-<img src="../../../assets/unknown.jpg">
-<p>
-	<!--TODO: bind link's href to profile_link-->
-	<a class="btn btn-light" target="_blank">Open profile on Spotify</a>	
-</p>
+<h1>Search Spotify</h1>
+<!--TODO: bind input's model to searchString-->
+<input [(ngModel)]="searchString">
+<!--TODO: bind select's model to searchCategory-->
+<select>
+	<!--TODO: loop over searchCategories to create dropdown options-->
+	<!--populate body and text value https://www.w3schools.com/tags/att_option_selected.asp-->
+	<option [ngValue]="category" *ngFor="let category of searchCategories">
+		{{category}}
+	</option>
+</select>
+<!--TODO: Call search function when the button is clicked-->
+<button class="btn btn-light" (click)="searchSongs()">Search</button>
+<!--TODO: Display a carousel component if searching for an artist or album. Bind carousel's resources and give it a static carouselId.-->
+<!--TODO: Display a track-list component if searching for a track. Bind track-list's tracks.-->
